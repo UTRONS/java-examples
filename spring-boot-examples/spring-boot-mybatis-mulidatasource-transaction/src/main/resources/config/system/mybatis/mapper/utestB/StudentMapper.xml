@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.utrons.springbootexamples.system.dao.utestb.StudentDao" >
+	<resultMap id="baseResultMap" type="com.utrons.springbootexamples.system.model.Student" >
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<!-- <result column="sex" property="sex" javaType="com.neo.enums.UserSexEnum"/> -->
+		<result column="sex" property="sex" jdbcType="INTEGER"/>
+		<result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<sql id="base_Column_List" >
+		id, username, sex, createTime
+	</sql>
+
+	<select id="getAll" resultMap="baseResultMap"  >
+		SELECT
+		<include refid="base_Column_List" />
+		FROM Student
+	</select>
+
+	<select id="getUser" parameterType="java.lang.Long" resultMap="baseResultMap" >
+		SELECT
+		<include refid="base_Column_List" />
+		FROM Student
+		WHERE id = #{id}
+	</select>
+
+	<insert id="insert" parameterType="com.utrons.springbootexamples.system.model.Student" >
+		INSERT INTO
+		Student
+		(username, sex)
+		VALUES
+		(#{username}, #{sex})
+	</insert>
+
+	<update id="update" parameterType="com.utrons.springbootexamples.system.model.Student" >
+		UPDATE
+		Student
+		SET
+		<if test="username != null">username = #{username},</if>
+		<if test="sex != -1">sex = #{sex}</if>
+		WHERE
+		id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Long" >
+		DELETE FROM
+		Student
+		WHERE
+		id =#{id}
+	</delete>
+
+</mapper>

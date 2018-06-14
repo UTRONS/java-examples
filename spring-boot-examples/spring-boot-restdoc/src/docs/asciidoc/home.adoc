@@ -1,0 +1,80 @@
+= My Document's Title
+
+My document provides...
+
+= My Document's Title
+
+My document provides...
+
+= My Document's Title
+Doc Writer <doc.writer@asciidoctor.org>
+
+My document provides...
+
+= My Document's Title
+Doc Writer <doc.writer@asciidoctor.org>
+v1.0, 2014-01-01
+
+My document provides...
+
+= My Document's Title
+Doc Writer <doc.writer@asciidoctor.org>
+v1.0, 2014-01-01
+:imagesdir: assets/images
+:homepage: http://asciidoctor.org
+
+My document provides...
+
+= Document Title (Level 0)
+
+== Level 1 Section Title
+
+=== Level 2 Section Title
+
+==== Level 3 Section Title
+
+===== Level 4 Section Title
+
+====== Level 5 Section Title
+
+[#primitives-nulls]
+== Primitive types and null values
+
+== Primitive types and null values
+
+[.lead]
+这是一个文档
+
+[.lead]
+这是一个文档
+
+这是一个文档
+
+[%hardbreaks]
+*bold phrase* & **char**acter**s**
+*bold phrase* & *char*acter**s**
+**bold phrase** & *char*acter**s**
+*这*是一**个文**档
+
+include::{snippets}/home/curl-request.adoc[]
+
+
+[%hardbreaks]
+aaaaaaaaaa
+bbbbbbbbbbbbb
+ccccccccccccccc
+ddddddddddddddddd
+
+
+A normal paragraph.
+
+	A paragraph offset by at least one spac	e becomes a literal paragraph.
+ All lines in a literal paragraph must be adjacent.
+
+	A literal paragraph is displayed as preformatted text.
+ The text is shown in a fixed-width font.
+ 	Spaces and newlines,
+ 	like the ones in this sentence,
+ 	are preserved.
+
+Another normal paragraph.
