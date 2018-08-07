@@ -1,0 +1,13 @@
+# java -jar user-service-1.0.0.jar --spring.profiles.active=peer3
+# 高可用多节点配置
+server:
+  port: 10103
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:5001/eureka/, http://localhost:5002/eureka/, http://localhost:5003/eureka/
+
+feign:
+  hystrix:
+    enabled: true

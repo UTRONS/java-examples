@@ -1,0 +1,11 @@
+# java -jar registry-center-1.0.0.jar --spring.profiles.active=peer2
+# 高可用多节点配置
+server:
+  port: 5002
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: false
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:5001/eureka/, http://localhost:5003/eureka/ # 注册到其他所有节点
