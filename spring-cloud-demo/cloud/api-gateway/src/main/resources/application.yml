@@ -24,7 +24,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:5001/eureka/, http://localhost:5002/eureka/, http://localhost:5003/eureka/
+      defaultZone: http://172.28.1.11:5000/eureka/, http://172.28.1.12:5000/eureka/, http://172.28.1.13:5000/eureka/
 
 feign:
   hystrix:

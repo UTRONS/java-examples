@@ -1,13 +1,8 @@
-# java -jar registry-center-1.0.0.jar
-# 单节点配置
 server:
-  port: 5001
+  port: 5000
 eureka:
   instance:
     hostname: localhost
-    preferIpAddress: false
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    preferIpAddress: true
+  server:
+    enable-self-preservation: false # 上线时，应设为true 
