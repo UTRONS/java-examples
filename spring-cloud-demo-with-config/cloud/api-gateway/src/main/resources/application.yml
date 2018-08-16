@@ -1,0 +1,31 @@
+# 访问地址：
+#     http://localhost:8000/order/getOrderPort
+#     http://localhost:8000/user/getOrderPort
+#     http://localhost:8000/user/getUserPort
+server:
+  port: 8000
+
+spring:
+  cloud:        # spring cloud gateway 路由配置方式
+    gateway:
+      discovery:      # 是否与服务发现组件进行结合，通过 转发到具体的服务实例。默认为false，设为true便开启通过服务中心的自动根据 serviceId 创建路由的功能。
+        locator:      # 路由访问方式
+          enabled: true
+      routes:
+      - id: order-service
+        uri: lb://order-service      # 路由到order-service
+        predicates:
+        - Path=/order/**
+      - id: user-service
+        uri: lb://user-service       # 路由到user-service
+        predicates:
+        - Path=/user/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://172.28.1.11:5000/eureka/, http://172.28.1.12:5000/eureka/, http://172.28.1.13:5000/eureka/
+
+feign:
+  hystrix:
+    enabled: true

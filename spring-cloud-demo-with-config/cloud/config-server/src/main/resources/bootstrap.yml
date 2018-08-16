@@ -1,0 +1,24 @@
+# java -jar config-server-1.0.0.jar --spring.profiles.active=release
+spring:
+  profiles:
+    active: release
+  cloud:
+    config:
+      server:
+        bootstrap: true
+        git:
+#          uri: file:/D:/spring-cloud-demo.git
+          uri: https://github.com/Eadwyn/spring-cloud-demo.git
+          search-paths:
+          - /cloud
+          - /service
+      label: master
+
+      # client
+      name: config-server
+      fail-fast: true
+      retry:
+        initial-interval: 1000 # 最初重试间隔。单位： ms
+        max-interval: 10000 # 最长重试间隔。单位： ms
+        max-attempts: 30 # 最多重试 6 次
+        multiplier: 1.5 # 每次重试失败后，重试间隔所增加的倍数

@@ -1,0 +1,6 @@
+# java -jar registry-server-1.0.0.jar --spring.profiles.active=peer1
+# 高可用多节点配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://172.28.1.11:${server.port}/eureka/, http://172.28.1.12:${server.port}/eureka/ # 对于多节点配置，eureka客户羰需注册到所有注册中心节点. 如果只注册到其中一个或多个节点，当这些被注册的节点故障后，eureka客户端也不会注册到其他正常节点上

@@ -1,0 +1,36 @@
+# java -jar order-service-1.0.0.jar --spring.profiles.active=release
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: dev
+  cloud:
+    config:
+      name: order-service
+      label: master
+      profile: dev
+#      uri: http://127.0.0.1:9900 # 采用uri方式，而非discovery方式从注册中心拉取配置
+      # 产品上线后，配置中心的压力不会太大，添加或删除配置中心节点的情况非常少
+      # 但添加或修改注册中心的情况却很常见
+      # 而采用discovery时，必须要在此文档添加eureka client的配置。当注册中心信息修改后，需要同时悠eureka client信息
+      discovery: # 采用该模式，必须要在此文档配置eureka client信息
+        enabled: true
+        serviceId: config-server
+      username: admin
+      password: abcd123
+      fail-fast: true
+      retry:
+        initial-interval: 1000 # 最初重试间隔。单位： ms
+        max-interval: 10000 # 最长重试间隔。单位： ms
+        max-attempts: 30 # 最多重试 6 次
+        multiplier: 1.5 # 每次重试失败后，重试间隔所增加的倍数
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:5000/eureka/ #, http://172.28.1.12:5000/eureka/, http://172.28.1.13:5000/eureka/
+
+feign:
+  hystrix:
+    enabled: true

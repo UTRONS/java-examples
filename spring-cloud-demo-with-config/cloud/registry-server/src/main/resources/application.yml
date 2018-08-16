@@ -1,0 +1,8 @@
+server:
+  port: 5000
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+  server:
+    enable-self-preservation: false # 上线时，应设为true
